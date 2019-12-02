@@ -16,7 +16,6 @@ BATCH_SIZE = 16
 LATENT_DIM = 128
 CONV_DIM = 64
 D_NORM_LAYER = "SN" # switch to "BN" to run baseline models
-PRINT_EVERY = 200
 SAVE_FOLDER = "results/"
 MODEL_SAVE_FOLDER = "pretrained_models/"
 
