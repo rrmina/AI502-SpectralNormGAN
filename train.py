@@ -5,6 +5,7 @@ import torchvision
 from torchvision import datasets, transforms
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
 import utils
 from models import Generator, Discriminator
@@ -105,8 +106,9 @@ def main():
     losses = {"D": [], "G": []}
     for epoch in range(1, NUM_EPOCHS+1):
         print("========Epoch {}/{}========".format(epoch, NUM_EPOCHS))
-
         epoch_losses = {"D": [], "G": []}
+
+        start_time = time.time()
 
         for batch_num, (real_images, _) in enumerate(train_loader):
             # Get the batch size
@@ -169,6 +171,8 @@ def main():
             utils.show(sample_images)
             utils.saveimg(sample_images, SAVE_FOLDER + D_NORM_LAYER + str(epoch) + ".png")
         g.train();
+
+        print("Time Elapsed: {}".format(time.time() - start_time))
 
     # Plot Network Losses
     def plott(losses):
